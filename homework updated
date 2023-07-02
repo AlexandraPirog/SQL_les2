@@ -1,0 +1,50 @@
+#task 1-2
+SELECT * FROM lesson2.sales;
+CREATE TABLE Sales
+(
+ID INT AUTO_INCREMENT PRIMARY KEY,
+Order_date DATE NOT NULL,
+Count_product INT NOT NULL
+);
+INSERT INTO Sales (Order_date, Count_product)
+VALUES 
+('2022-01-01', '156'),
+('2022-01-02', '180'),
+('2022-01-03', '21'),
+('2022-01-04', '124'),
+('2022-01-05', '341');
+
+SELECT Count_product,
+CASE
+	WHEN Count_product < 100 THEN 'Маленький заказ'
+	WHEN Count_product BETWEEN 100 and 300 THEN 'Средний заказ'
+    ELSE 'Большой заказ'
+END AS Category
+FROM lesson2.sales
+
+
+
+# task3
+SELECT * FROM lesson2.orders_;
+CREATE TABLE Sales
+(
+ID INT AUTO_INCREMENT PRIMARY KEY,
+employee_id INT NOT NULL,
+amount FLOAT NOT NULL,
+order_status VARCHAR(45) NOT NULL
+);
+INSERT INTO orders_(employee_id,amount,order_status)
+VALUES
+('E03','15.00','OPEN'),
+('E01','25.50','OPEN'),
+('E05','100.70','CLOSED'),
+('E02','22.18','OPEN'),
+('E04','09.50','CANCELLED');
+
+SELECT order_status,
+CASE
+	WHEN order_status ='OPEN' THEN 'Order is in open state'
+    WHEN order_status ='CLOSED' THEN 'Order is closed'
+    ELSE 'Order is cancelled'
+    END AS full_order_status
+    FROM lesson2.orders_
